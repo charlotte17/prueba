@@ -1,0 +1,33 @@
+uuid: 5933fa16-a7ed-4f29-9a11-4b6fd8eaf1fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner
+    - node.type.landing_page
+    - paragraphs.paragraphs_type.banner
+  module:
+    - entity_reference_revisions
+id: node.landing_page.field_banner
+field_name: field_banner
+entity_type: node
+bundle: landing_page
+label: Banner
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      banner: banner
+    target_bundles_drag_drop:
+      banner:
+        enabled: true
+        weight: 3
+      tile:
+        weight: 4
+        enabled: false
+field_type: entity_reference_revisions

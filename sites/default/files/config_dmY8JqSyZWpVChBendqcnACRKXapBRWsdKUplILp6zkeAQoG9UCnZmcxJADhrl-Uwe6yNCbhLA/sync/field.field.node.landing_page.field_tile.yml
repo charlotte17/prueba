@@ -1,0 +1,33 @@
+uuid: ddb94e9e-0776-4753-9a39-2a12f3588994
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tile
+    - node.type.landing_page
+    - paragraphs.paragraphs_type.tile
+  module:
+    - entity_reference_revisions
+id: node.landing_page.field_tile
+field_name: field_tile
+entity_type: node
+bundle: landing_page
+label: Tile
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      tile: tile
+    target_bundles_drag_drop:
+      banner:
+        weight: 3
+        enabled: false
+      tile:
+        enabled: true
+        weight: 4
+field_type: entity_reference_revisions

@@ -1,0 +1,21 @@
+uuid: 86a0c12f-e12b-40cd-82e7-d885197dc657
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.tile
+  module:
+    - text
+id: paragraph.tile.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: tile
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

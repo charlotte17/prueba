@@ -1,0 +1,35 @@
+uuid: 054e8cf6-c402-4caa-9b22-381d05e05e86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.banner.field_call_to_action
+    - field.field.paragraph.banner.field_image
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.banner
+  module:
+    - image
+    - link
+id: paragraph.banner.default
+targetEntityType: paragraph
+bundle: banner
+mode: default
+content:
+  field_call_to_action:
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_image:
+    weight: 1
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+hidden:
+  created: true
+  status: true
+  uid: true

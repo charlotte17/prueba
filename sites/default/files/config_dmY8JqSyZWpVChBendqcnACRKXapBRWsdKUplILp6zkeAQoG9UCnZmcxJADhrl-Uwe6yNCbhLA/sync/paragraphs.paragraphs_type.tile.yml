@@ -1,0 +1,6 @@
+uuid: b2cf6cfb-93e8-4256-92ba-8fcdd6524c3f
+langcode: en
+status: true
+dependencies: {  }
+id: tile
+label: Tile

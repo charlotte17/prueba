@@ -1,0 +1,33 @@
+uuid: 5000c15e-f558-4efc-b2f1-bc9230235fc1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tile.field_description
+    - field.field.paragraph.tile.field_image
+    - paragraphs.paragraphs_type.tile
+  module:
+    - image
+    - text
+id: paragraph.tile.default
+targetEntityType: paragraph
+bundle: tile
+mode: default
+content:
+  field_description:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_image:
+    weight: 1
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+hidden:
+  created: true
+  uid: true
