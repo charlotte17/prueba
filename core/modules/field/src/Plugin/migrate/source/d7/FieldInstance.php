@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\field\Plugin\migrate\source\d7\FieldInstance.
- */
-
 namespace Drupal\field\Plugin\migrate\source\d7;
 
 use Drupal\migrate\Row;
@@ -15,6 +10,7 @@ use Drupal\migrate_drupal\Plugin\migrate\source\DrupalSqlBase;
  *
  * @MigrateSource(
  *   id = "d7_field_instance",
+ *   source_provider = "field"
  * )
  */
 class FieldInstance extends DrupalSqlBase {
@@ -32,13 +28,14 @@ class FieldInstance extends DrupalSqlBase {
       ->fields('fc', array('type'));
 
     $query->innerJoin('field_config', 'fc', 'fci.field_id = fc.id');
+    $query->addField('fc', 'data', 'field_data');
 
     // Optionally filter by entity type and bundle.
     if (isset($this->configuration['entity_type'])) {
-      $query->condition('entity_type', $this->configuration['entity_type']);
+      $query->condition('fci.entity_type', $this->configuration['entity_type']);
 
       if (isset($this->configuration['bundle'])) {
-        $query->condition('bundle', $this->configuration['bundle']);
+        $query->condition('fci.bundle', $this->configuration['bundle']);
       }
     }
 
@@ -57,6 +54,7 @@ class FieldInstance extends DrupalSqlBase {
       'instance_settings' => $this->t('Field instance settings.'),
       'widget_settings' => $this->t('Widget settings.'),
       'display_settings' => $this->t('Display settings.'),
+      'field_settings' => $this->t('Field settings.'),
     );
   }
 
@@ -85,6 +83,9 @@ class FieldInstance extends DrupalSqlBase {
     // This is for parity with the d6_field_instance plugin.
     $row->setSourceProperty('widget_type', $data['widget']['type']);
 
+    $field_data = unserialize($row->getSourceProperty('field_data'));
+    $row->setSourceProperty('field_settings', $field_data['settings']);
+
     return parent::prepareRow($row);
   }
 
@@ -107,4 +108,5 @@ class FieldInstance extends DrupalSqlBase {
       ),
     );
   }
+
 }
