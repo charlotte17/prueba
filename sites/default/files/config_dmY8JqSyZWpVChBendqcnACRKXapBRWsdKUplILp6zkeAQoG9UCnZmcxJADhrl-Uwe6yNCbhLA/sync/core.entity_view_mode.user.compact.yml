@@ -1,0 +1,10 @@
+uuid: 4b2e7daa-e28f-45f4-8a4e-78069b63f659
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.compact
+label: Compact
+targetEntityType: user
+cache: true

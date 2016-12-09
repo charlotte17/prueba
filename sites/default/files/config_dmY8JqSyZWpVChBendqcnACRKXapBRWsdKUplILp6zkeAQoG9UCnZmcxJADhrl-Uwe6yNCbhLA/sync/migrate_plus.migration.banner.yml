@@ -1,0 +1,33 @@
+uuid: bb418b7e-8222-4afe-b255-f20308136461
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - paragraph_migration
+_core:
+  default_config_hash: ayippe7kqMJO8YdM6DZrmCEmewD80wsH8K3BpqL3FLw
+id: banner
+migration_tags: null
+migration_group: null
+label: null
+source:
+  plugin: csv
+  path: modules/custom/paragraph_migration/assets/csv/landing_pages.csv
+  header_row_count: 1
+  keys:
+    - id
+process:
+  field_image:
+    plugin: migration
+    migration: files
+    source: banner_image
+    no_stub: true
+  field_call_to_action/title: banner_link_text
+  field_call_to_action/uri: banner_link
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: banner
+migration_dependencies:
+  required:
+    - files

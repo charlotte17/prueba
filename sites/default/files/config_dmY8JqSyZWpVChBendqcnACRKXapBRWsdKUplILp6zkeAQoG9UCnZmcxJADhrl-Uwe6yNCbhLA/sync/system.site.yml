@@ -1,0 +1,12 @@
+uuid: 09cb11c3-796f-4f64-9000-f32806bcb889
+name: Prueba
+mail: example@example.dev
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
