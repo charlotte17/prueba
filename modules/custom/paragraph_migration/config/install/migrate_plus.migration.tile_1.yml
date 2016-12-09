@@ -1,0 +1,26 @@
+id: tile_1
+dependencies:
+  enforced:
+    module:
+      - paragraph_migration
+source:
+  plugin: csv
+  path: "modules/custom/paragraph_migration/assets/csv/landing_pages.csv"
+  header_row_count: 1
+  keys:
+    - id
+    - img1
+destination:
+   plugin: entity_reference_revisions:paragraph
+   default_bundle: tile
+process:
+  field_image:
+    plugin: migration
+    migration: files
+    source: img1
+    no_stub: true
+  field_description: desc1
+migration_dependencies:
+  required:
+    - files
+

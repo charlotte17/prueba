@@ -1,0 +1,41 @@
+id: files
+dependencies:
+  enforced:
+    module:
+      - paragraph_migration
+source:
+  plugin: csv
+  path: "modules/custom/paragraph_migration/assets/csv/files.csv"
+  header_row_count: 1
+  keys:
+    - name
+  constants:
+    source_base_path: "modules/custom/paragraph_migration/assets/img"
+    destination_base_path: "public:/"
+destination:
+  plugin: entity:file
+process:
+  filename: name
+  source_full_path:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/source_base_path
+        - name
+    -
+      plugin: urlencode
+  destination_full_path:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/destination_base_path
+        - name
+    -
+      plugin: urlencode
+  uri:
+    plugin: file_copy
+    source:
+      - '@source_full_path'
+      - '@destination_full_path'

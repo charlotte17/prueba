@@ -1,0 +1,25 @@
+id: banner
+dependencies:
+  enforced:
+    module:
+      - paragraph_migration
+source:
+  plugin: csv
+  path: "modules/custom/paragraph_migration/assets/csv/landing_pages.csv"
+  header_row_count: 1
+  keys:
+    - id
+destination:
+   plugin: entity_reference_revisions:paragraph
+   default_bundle: banner
+process:
+  field_image:
+    plugin: migration
+    migration: files
+    source: banner_image
+    no_stub: true
+  field_call_to_action/title: banner_link_text
+  field_call_to_action/uri: banner_link
+migration_dependencies:
+  required:
+    - files
