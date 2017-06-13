@@ -32,10 +32,14 @@ module:
   node: 0
   options: 0
   page_cache: 0
+  paragraph_migration: 0
   paragraphs: 0
   path: 0
+  program_migrate: 0
+  prueba_import: 0
   quickedit: 0
   rdf: 0
+  reward_migrate: 0
   search: 0
   shortcut: 0
   system: 0

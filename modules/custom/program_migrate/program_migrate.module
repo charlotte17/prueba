@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains program_migrate.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function program_migrate_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the program_migrate module.
+    case 'help.page.program_migrate':
+      $output = '';
+      $output .= '<h3>' . t('Program Migrate') . '</h3>';
+      $output .= '<p>' . t('The import will allow a CSV file to create the Program content for the site.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

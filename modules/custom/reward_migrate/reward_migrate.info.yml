@@ -1,0 +1,10 @@
+name: Reward Migrate
+type: module
+description: CSV Migrate for the Reward content
+core: 8.x
+package: Migration
+dependencies:
+  - migrate
+  - migrate_source_csv
+  - migrate_plus
+  - migrate_tools
