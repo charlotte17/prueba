@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\EventDispatcher\Tests\Debug;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -18,7 +19,7 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\Stopwatch\Stopwatch;
 
-class TraceableEventDispatcherTest extends \PHPUnit_Framework_TestCase
+class TraceableEventDispatcherTest extends TestCase
 {
     public function testAddRemoveListener()
     {
@@ -73,6 +74,16 @@ class TraceableEventDispatcherTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(123, $tdispatcher->getListenerPriority('foo', $listeners[0]));
     }
 
+    public function testGetListenerPriorityReturnsZeroWhenWrappedMethodDoesNotExist()
+    {
+        $dispatcher = $this->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')->getMock();
+        $traceableEventDispatcher = new TraceableEventDispatcher($dispatcher, new Stopwatch());
+        $traceableEventDispatcher->addListener('foo', function () {}, 123);
+        $listeners = $traceableEventDispatcher->getListeners('foo');
+
+        $this->assertSame(0, $traceableEventDispatcher->getListenerPriority('foo', $listeners[0]));
+    }
+
     public function testAddRemoveSubscriber()
     {
         $dispatcher = new EventDispatcher();
@@ -120,7 +131,7 @@ class TraceableEventDispatcherTest extends \PHPUnit_Framework_TestCase
 
     public function testLogger()
     {
-        $logger = $this->getMock('Psr\Log\LoggerInterface');
+        $logger = $this->getMockBuilder('Psr\Log\LoggerInterface')->getMock();
 
         $dispatcher = new EventDispatcher();
         $tdispatcher = new TraceableEventDispatcher($dispatcher, new Stopwatch(), $logger);
@@ -135,7 +146,7 @@ class TraceableEventDispatcherTest extends \PHPUnit_Framework_TestCase
 
     public function testLoggerWithStoppedEvent()
     {
-        $logger = $this->getMock('Psr\Log\LoggerInterface');
+        $logger = $this->getMockBuilder('Psr\Log\LoggerInterface')->getMock();
 
         $dispatcher = new EventDispatcher();
         $tdispatcher = new TraceableEventDispatcher($dispatcher, new Stopwatch(), $logger);
