@@ -1,0 +1,33 @@
+uuid: b2f5fe79-63ad-4c23-9c6f-2b8ac6cefc19
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - paragraph_migration
+_core:
+  default_config_hash: wJL4o4CiFoVzNfaZAccWeTeAaoX6Y_YZ-DFxrnno_F0
+id: tile_3
+migration_tags: null
+migration_group: null
+label: null
+source:
+  plugin: csv
+  path: modules/custom/paragraph_migration/assets/csv/landing_pages.csv
+  header_row_count: 1
+  keys:
+    - id
+    - img3
+process:
+  field_image:
+    plugin: migration
+    migration: files
+    source: img3
+    no_stub: true
+  field_description: desc3
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: tile
+migration_dependencies:
+  required:
+    - files

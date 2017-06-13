@@ -1,0 +1,10 @@
+name: Program Migrate
+type: module
+description: CSV Migrate for the Program content
+core: 8.x
+package: Migration
+dependencies:
+  - migrate
+  - migrate_source_csv
+  - migrate_plus
+  - migrate_tools

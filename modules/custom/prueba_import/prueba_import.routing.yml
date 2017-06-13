@@ -1,0 +1,8 @@
+prueba_import.import_form:
+  path: '/admin/import'
+  defaults:
+    _form: '\Drupal\prueba_import\Form\ImportForm'
+    _title: 'Import Form'
+  requirements:
+    _permission: 'prueba import content'
+  

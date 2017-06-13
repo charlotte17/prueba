@@ -1,0 +1,39 @@
+uuid: c9443d89-4201-44ef-b92a-b4617f204c5e
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - program_migrate
+_core:
+  default_config_hash: nsS3RB_9YZZ7njmfxjaf6xbaDwJeP84o2gjwRgDg1tg
+id: program_csv
+migration_tags:
+  - CSV
+migration_group: null
+label: 'Program CSV file migration'
+source:
+  plugin: csv
+  path: 'public://csv/programs.csv'
+  header_row_count: 1
+  keys:
+    - 'Program Name'
+process:
+  type:
+    plugin: default_value
+    default_value: course
+  uid:
+    plugin: default_value
+    default_value: 1
+  title: 'Long Title'
+  field_short_title: 'Short Title'
+  body: Description
+  field_additional_fee: 'Additional Fee'
+  field_program_id: 'Program Name'
+  field_program_status: 'Current Program Status'
+  field_program_transfer_status: 'Transfer Status'
+destination:
+  plugin: 'entity:node'
+migration_dependencies:
+  required: {  }
+  optional: {  }

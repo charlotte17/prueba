@@ -1,0 +1,37 @@
+uuid: b827d2a0-3ca2-4ed7-b9df-3dbe75847781
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - reward_migrate
+_core:
+  default_config_hash: LT7l3UCG2U2pWgKgYftH-YUuD09nrAddcPCiAZaF4OQ
+id: reward_csv
+migration_tags:
+  - CSV
+migration_group: null
+label: 'Reward CSV file migration'
+source:
+  plugin: csv
+  path: 'public://csv/reward.csv'
+  header_row_count: 1
+  keys:
+    - id
+process:
+  type:
+    plugin: default_value
+    default_value: reward
+  uid:
+    plugin: default_value
+    default_value: 1
+  title: name
+  body: description
+  field_reward_id: id
+  field_reward_category: category
+  field_reward_value: value
+destination:
+  plugin: 'entity:node'
+migration_dependencies:
+  required: {  }
+  optional: {  }

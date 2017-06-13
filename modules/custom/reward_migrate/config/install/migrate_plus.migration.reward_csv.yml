@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - reward_migrate
+id: award_csv
+label: Award CSV file migration
+migration_tags:
+  - CSV
+source:
+  plugin: csv
+  path: 'public://csv/awards.csv'
+  header_row_count: 1
+  keys:
+    - id
+process:
+  type:
+    plugin: default_value
+    default_value: award
+  uid:
+    plugin: default_value
+    default_value: 1
+  title: name
+  body: description
+  field_award_application_deadline: applicationDeadline
+  field_award_id: id
+  field_award_category: category
+  field_award_value: value
+  field_number_awarded: numberAwarded
+destination:
+  plugin: entity:node
+migration_dependencies:
+  required: {}
+  optional: {}
